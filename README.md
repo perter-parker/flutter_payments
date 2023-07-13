@@ -28,7 +28,7 @@
     ```
 
 2.  패키지를 가져온 다음, 결제 요청을 만들고 처리합니다:
-
+    ```dart
     import 'package:iamport_flutter/iamport_payment.dart';
     void initiatePayment() {
     String userCode = "아임포트에서 발급받은 사용자 코드";
@@ -53,6 +53,7 @@
             print('결제 실패: $error');
         });
         }
+    ```
 
 위 코드에서 userCode는 아임포트에서 발급받은 사용자 코드입니다. orderId는 고유한 주문 번호로, 결제마다 고유해야 합니다. price는 결제할 금액을 나타냅니다. 그리고 pg, payMethod, name 등의 필요한 정보들을 설정한 후, IamportPayment.requestPayment()를 호출하여 결제를 요청합니다.
 
