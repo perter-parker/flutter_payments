@@ -35,23 +35,23 @@
         String orderId = "고유 주문 번호";
         int price = 1000; // 결제할 금액
     
-            IamportPayment.requestPayment(
-                userCode: userCode,
-                data: IamportRequest(
-                pg: "아임포트에서 지원하는 PG사",
-                payMethod: "결제 수단",
-                name: "상품명",
-                merchantUid: orderId,
-                amount: price,
-                // 추가 필요한 정보들
-                ),
-            ).then((response) {
-                // 결제 완료 후 처리할 작업
-                print('결제 완료: ${response.toJson()}');
-            }).catchError((error) {
-                // 결제 실패 시 처리할 작업
-                print('결제 실패: $error');
-            });
+        IamportPayment.requestPayment(
+            userCode: userCode,
+            data: IamportRequest(
+            pg: "아임포트에서 지원하는 PG사",
+            payMethod: "결제 수단",
+            name: "상품명",
+            merchantUid: orderId,
+            amount: price,
+            // 추가 필요한 정보들
+            ),
+        ).then((response) {
+            // 결제 완료 후 처리할 작업
+            print('결제 완료: ${response.toJson()}');
+        }).catchError((error) {
+            // 결제 실패 시 처리할 작업
+            print('결제 실패: $error');
+        });
     }
     ```
 
