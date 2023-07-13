@@ -30,28 +30,28 @@
 2.  패키지를 가져온 다음, 결제 요청을 만들고 처리합니다:
     ```dart
     import 'package:iamport_flutter/iamport_payment.dart';
-    void initiatePayment() {
-    String userCode = "아임포트에서 발급받은 사용자 코드";
-    String orderId = "고유 주문 번호";
-    int price = 1000; // 결제할 금액
-
-        IamportPayment.requestPayment(
-            userCode: userCode,
-            data: IamportRequest(
-            pg: "아임포트에서 지원하는 PG사",
-            payMethod: "결제 수단",
-            name: "상품명",
-            merchantUid: orderId,
-            amount: price,
-            // 추가 필요한 정보들
-            ),
-        ).then((response) {
-            // 결제 완료 후 처리할 작업
-            print('결제 완료: ${response.toJson()}');
-        }).catchError((error) {
-            // 결제 실패 시 처리할 작업
-            print('결제 실패: $error');
-        });
+        void initiatePayment() {
+        String userCode = "아임포트에서 발급받은 사용자 코드";
+        String orderId = "고유 주문 번호";
+        int price = 1000; // 결제할 금액
+    
+            IamportPayment.requestPayment(
+                userCode: userCode,
+                data: IamportRequest(
+                pg: "아임포트에서 지원하는 PG사",
+                payMethod: "결제 수단",
+                name: "상품명",
+                merchantUid: orderId,
+                amount: price,
+                // 추가 필요한 정보들
+                ),
+            ).then((response) {
+                // 결제 완료 후 처리할 작업
+                print('결제 완료: ${response.toJson()}');
+            }).catchError((error) {
+                // 결제 실패 시 처리할 작업
+                print('결제 실패: $error');
+            });
         }
     ```
 
