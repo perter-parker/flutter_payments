@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_payments/screens/certification.dart';
-import 'package:flutter_payments/screens/certification_result.dart';
-import 'package:flutter_payments/screens/certification_test.dart';
-import 'package:flutter_payments/screens/home.dart';
-import 'package:flutter_payments/screens/payment.dart';
-import 'package:flutter_payments/screens/payment_result.dart';
-import 'package:flutter_payments/screens/payment_test.dart';
+import 'package:flutter_payments/iamport/screens/home.dart';
+import 'package:flutter_payments/tosspayments/toss_payments.dart';
+import 'iamport/screens/certification.dart';
+import 'iamport/screens/certification_result.dart';
+import 'iamport/screens/certification_test.dart';
+import 'iamport/screens/payment.dart';
+import 'iamport/screens/payment_result.dart';
+import 'iamport/screens/payment_test.dart';
+import 'iamport/screens/payments_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,13 +39,14 @@ class _MyAppState extends State<MyApp> {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const Home(),
+        '/': (context) => const TosspaymentsScreen(),
         '/payment-test': (context) => const PaymentTest(),
         '/payment': (context) => const Payment(),
         '/payment-result': (context) => const PaymentResult(),
         '/certification-test': (context) => const CertificationTest(),
         '/certification': (context) => const Certification(),
         '/certification-result': (constext) => const CertificationResult(),
+        '/payments': (contet) => const PaymentsScreen(),
       },
     );
   }

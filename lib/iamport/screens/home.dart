@@ -103,7 +103,7 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/payment-test');
+                          Navigator.pushNamed(context, '/payments');
                         },
                       ),
                     ),

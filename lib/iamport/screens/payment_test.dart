@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_payments/model/method.dart';
-import 'package:flutter_payments/model/pg.dart';
-import 'package:flutter_payments/model/quota.dart';
+import 'package:flutter_payments/iamport/model/method.dart';
+import 'package:flutter_payments/iamport/model/quota.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
 import 'package:iamport_flutter/model/pg/kcp/kcp_products.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_pay_products.dart';
+
+import '../model/pg.dart';
 
 class PaymentTest extends StatefulWidget {
   const PaymentTest({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_payments/utils/index.dart';
+import 'package:flutter_payments/iamport/utils/index.dart';
 import 'package:iamport_flutter/iamport_payment.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
 

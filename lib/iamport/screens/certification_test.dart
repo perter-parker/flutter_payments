@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_payments/model/carrier.dart';
+import 'package:flutter_payments/iamport/model/carrier.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
 
 class CertificationTest extends StatefulWidget {
