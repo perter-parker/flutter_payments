@@ -105,7 +105,7 @@ packages:
     source: hosted
     version: "0.6.7"
   json_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: json_annotation
       sha256: b10a7b2ff83d83c777edba3c6a0f97045ddadd56c944e1a23a3fdf43a1bf4467
@@ -213,6 +213,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
+  tosspayments_webview_flutter:
+    dependency: "direct main"
+    description:
+      name: tosspayments_webview_flutter
+      sha256: "19c74060bf5fc04847729cef5de87f68615e06d8ba4e9588e4020f544db62fd6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   uni_links:
     dependency: transitive
     description:
@@ -238,7 +246,7 @@ packages:
     source: hosted
     version: "0.1.0"
   url_launcher:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: url_launcher
       sha256: "781bd58a1eb16069412365c98597726cd8810ae27435f04b3b4d3a470bacd61e"
