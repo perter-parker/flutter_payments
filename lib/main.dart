@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_payments/iamport/screens/home.dart';
-import 'package:flutter_payments/tosspayments/toss_payments.dart';
+import 'package:flutter_payments/home.dart';
 import 'iamport/screens/certification.dart';
 import 'iamport/screens/certification_result.dart';
 import 'iamport/screens/certification_test.dart';
@@ -39,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const TosspaymentsScreen(),
+        '/': (context) => const HomeScreen(),
         '/payment-test': (context) => const PaymentTest(),
         '/payment': (context) => const Payment(),
         '/payment-result': (context) => const PaymentResult(),
