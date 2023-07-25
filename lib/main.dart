@@ -7,7 +7,6 @@ import 'iamport/screens/certification_test.dart';
 import 'iamport/screens/payment.dart';
 import 'iamport/screens/payment_result.dart';
 import 'iamport/screens/payment_test.dart';
-import 'iamport/screens/payments_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,7 +44,6 @@ class _MyAppState extends State<MyApp> {
         '/certification-test': (context) => const CertificationTest(),
         '/certification': (context) => const Certification(),
         '/certification-result': (constext) => const CertificationResult(),
-        '/payments': (contet) => const PaymentsScreen(),
       },
     );
   }

@@ -142,7 +142,7 @@ class _TosspaymentsScreenState extends State<TosspaymentsScreen> {
                           ),
                         );
                       } else {
-                        print('안된겨?');
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('은행을 선택해주세요.')));
                       }
                     },
                     child: const Text('일반결제'),
