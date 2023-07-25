@@ -103,71 +103,152 @@ class _TosspaymentsScreenState extends State<TosspaymentsScreen> {
       appBar: AppBar(
         title: const Text("토스페이먼츠"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            children: List.generate(
-              easyPayList.length,
-              (index) => EasyPaymentButton(
-                text: easyPayList[index].ko,
-                backgroundColor: easyPayList[index].color,
-              ),
-            ),
-          ),
-          DropdownButton(
-            hint: const Text('은행 선택'),
-            value: selectedCardCompany,
-            items: cardCompnayList
-                .map((cardcompany) => DropdownMenuItem(
-                      value: cardcompany.code,
-                      child: Text(cardcompany.company),
-                    ))
-                .toList(),
-            onChanged: (value) {
-              setState(() {
-                selectedCardCompany = value ?? '';
-              });
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: TextButton(
-              style: TextButton.styleFrom(
-                minimumSize: Size(MediaQuery.of(context).size.width, 40.0),
-                backgroundColor: Colors.black,
-                foregroundColor: Colors.white,
-              ),
-              onPressed: () {
-                if (selectedCardCompany != '') {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TossPayments(
-                        clientKey: 'test_ck_BE92LAa5PVbzmkqd0LZV7YmpXyJj',
-                        data: PaymentData(
-                          paymentMethod: '카드',
-                          orderId: 'tosspayments-202303210239',
-                          orderName: 'toss t-shirt',
-                          amount: 50000,
-                          customerName: '김토스',
-                          customerEmail: 'toss@toss-payments.co.kr',
-                          flowMode: 'DIRECT',
-                          cardCompany: selectedCardCompany,
-                        ),
-                        success: null,
-                        fail: null,
-                      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            /// 카드 결제
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      minimumSize: Size(MediaQuery.of(context).size.width, 40.0),
+                      backgroundColor: Colors.black,
+                      foregroundColor: Colors.white,
                     ),
-                  );
-                } else {
-                  print('안된겨?');
-                }
-              },
-              child: const Text('일반결제'),
+                    onPressed: () {
+                      if (selectedCardCompany != '') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TossPayments(
+                              clientKey: 'test_ck_BE92LAa5PVbzmkqd0LZV7YmpXyJj',
+                              data: PaymentData(
+                                paymentMethod: '카드',
+                                orderId: 'tosspayments-202303210239',
+                                orderName: 'toss t-shirt',
+                                amount: 50000,
+                                customerName: '김토스',
+                                customerEmail: 'toss@toss-payments.co.kr',
+                                flowMode: 'DIRECT',
+                                cardCompany: selectedCardCompany,
+                              ),
+                              success: null,
+                              fail: null,
+                            ),
+                          ),
+                        );
+                      } else {
+                        print('안된겨?');
+                      }
+                    },
+                    child: const Text('일반결제'),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  width: double.infinity,
+                  child: DropdownButton(
+                    hint: const Text('은행 선택'),
+                    isExpanded: true,
+                    value: selectedCardCompany,
+                    items: cardCompnayList
+                        .map((cardcompany) => DropdownMenuItem(
+                              value: cardcompany.code,
+                              child: Text(cardcompany.company),
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedCardCompany = value ?? '';
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+
+            // 가상, 계좌, 핸드폰
+            Expanded(
+              flex: 1,
+              child: GridView(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, //1 개의 행에 보여줄 item 개수
+                  childAspectRatio: 2, //item 의 가로 1, 세로 2 의 비율
+                  mainAxisSpacing: 10, //수평 Padding
+                  crossAxisSpacing: 10, //수직 Padding
+                ),
+                children: [
+                  // 가상계좌
+                  methodButton(context, '가상계좌'),
+
+                  // 휴대폰
+                  methodButton(context, '휴대폰'),
+
+                  // 계좌이체
+                  methodButton(context, '계좌이체'),
+                ],
+              ),
+            ),
+
+            // 간편결제
+            Expanded(
+              flex: 3,
+              child: GridView(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, //1 개의 행에 보여줄 item 개수
+                  childAspectRatio: 2, //item 의 가로 1, 세로 2 의 비율
+                  mainAxisSpacing: 10, //수평 Padding
+                  crossAxisSpacing: 10, //수직 Padding
+                ),
+                children: List.generate(
+                  easyPayList.length,
+                  (index) => EasyPaymentButton(
+                    text: easyPayList[index].ko,
+                    backgroundColor: easyPayList[index].color,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Padding methodButton(BuildContext context, String method) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          side: const BorderSide(width: 1.0, color: Colors.black),
+          minimumSize: Size(MediaQuery.of(context).size.width, 40.0),
+          foregroundColor: Colors.black,
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TossPayments(
+                clientKey: 'test_ck_BE92LAa5PVbzmkqd0LZV7YmpXyJj',
+                data: PaymentData(
+                  paymentMethod: method,
+                  orderId: 'tosspayments-202303210239',
+                  orderName: 'toss t-shirt',
+                  amount: 50000,
+                  customerName: '김토스',
+                  customerEmail: 'toss@toss-payments.co.kr',
+                ),
+                success: null,
+                fail: null,
+              ),
+            ),
+          );
+        },
+        child: Text(method),
       ),
     );
   }
